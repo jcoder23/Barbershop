@@ -9,8 +9,9 @@ Array.prototype.forEach.call(photos, function(element) {
     var modalImg = document.getElementById("img01");
     var photoStyle = window.getComputedStyle(element, false);
     modal.style.display = "block";
+    // Detect window size and set modal image to either the thumb or full size
     //set modal image src to the background image url of the photo clicked
-    modalImg.src = photoStyle.backgroundImage.slice(4, -1).replace(/"/g, "").replace('thumb', 'full');
+    modalImg.src = window.innerWidth > 1000 ? photoStyle.backgroundImage.slice(4, -1).replace(/"/g, "").replace('thumb', 'full') : photoStyle.backgroundImage.slice(4, -1).replace(/"/g, "");
   }
 });
 
